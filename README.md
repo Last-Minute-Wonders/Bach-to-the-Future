@@ -68,7 +68,7 @@ Our team has set out to automate this process of beatmap generation using an alg
       ```
       
    8. ```bash
-      python3 main.py
+      nohup python3 main.py>/dev/null &
       ```
 5. Minimize the **Terminal** window and enjoy the game!
 
@@ -176,20 +176,35 @@ We are also able to manipulate individual note timings, modify volume.
 
 Further library discoveries were made that allowed for the direct output of audio files directly from python. Previously, all the audio files you heard were manually exported from digital audio workstations. This is the last piece of the puzzle that enabled the **Sandbox Mode**. 
 
+## Testing
+User trials were conducted with our friends on Windows and macOS, alongside later verifications with Parallels VM.
+
 ## Compatibility Issues
 
-Due to [pygame](https://www.pygame.org/news) being a less popular open source library than other game engines such as Unity, the library has not been keeping up with Python upgrades and OS upgrades over time. The last stable release was on 25 April 2019 and this version has various compability problems that affects our development.
+Due to [pygame](https://www.pygame.org/news) being a less popular open source library than other game engines such as Unity, the library has not been keeping up with Python upgrades and OS upgrades over time. The last stable release was on 25 April 2019 and this version has various compatibility problems that affects our development.
 
 ### Phantom Orbs
 
 For reasons unknown, among songs of longer durations (which would normally imply a greater number of orbs), the visuals of the orbs would break down - orbs that aren't meant to appear would appear on top of other orbs. **Fortunately, this does not happen when pygame 2.0.0.dev10 is being used.** **The stable release is essential when one wishes to deploy the scripts as executables for various OSes. This issue is only pertinent to users who are running the executable version.**
+
+### Fluidsynth.exe triggering anti-malware software
+
+The role of fluidsynth.exe is to render a modified MIDI file generated in sandbox mode into a .flac file for playback during a game. However, when attempting to overwrite an existing .flac file, certain anti-malware software such as Norton Data Protector might block this overwrite operation and cause a failure. There may or may not be a pop up notification when this happens. Regardless, it should be possible to check the security history of the anti-malware suite and find out if this is the case. **It is thus recommended to add whole game directory as an exclusion and set fluidsynth.exe as an excluded process to prevent this from happening.**
+
+### Install directory of libvlc.dll (unable to be located, has spaces)
+
+Libvlc.dll is an essential dependency for the game and we avoid including this in the packaged version of the game because we found it non-trivial to package and it is a common software already in most systems. **Thus, we require that all users install the VLC player themselves.** Issues that still occur with a system with VLC player already installed include:
+
+#### `could not find "libvlc.dll"` VLC player not located in the PATH environmental variable (%PATH% for windows, $PATH for MacOS/Linux) and installed in a non-standard location.
+
+We interface the system's installation of VLC player through the python-vlc module which in turn interfaces the libvlc.dll file. The module requires the location of the libvlc.dll file for this. To do this, it first searches the root directory of the game (which is not there), then the PATH environmental variable. If libvlc.dll is still not found, it searches a few common locations before giving the error. **Thus, in order to avoid this error, it is necessary to either include the `VideoLAN/VLC` directory in PATH, or install VLC in a standard location (e.g. the default install directory)**
+
+#### `%1 is not a valid win32 application` (Windows) VLC player is installed in a directory with spaces
+
+This is due to the limitations of python-vlc's parsing of the PATH environmental variable in Windows. To verify if this is the case, type `echo %PATH:;=&echo.%` inside a command prompt window and check the output. Look for the entry with `VideoLAN\VLC`and check if there are spaces within it. **If this is the case, the only way is to install VLC player in another directory which does not have spaces in it.**
 
 ### Audio Issues with certain Windows devices
 
 On Orbitee Mingyi's computer, there were issues using python-vlc to play .wav and .flac files when an active Pygame window is open. Various attempts were made to fix this directly were unsuccessful we had to sidestep it by loading all available game tracks (the background and campaign audio uses mp3 which did not have this issue) before initialising the display. This worked perfectly (at the cost of unneeded RAM usage by preloading unnecessary audio assets) until the implementation of sandbox mode. Because we allow the user to upload his/her own MIDI file to play with, there is now no possible way to preload all possible tracks beforehand. This was solved by performing a re-initialisation of the game before after processing a MIDI file, similar to how the game automatically updates itself after changing an option. However, the audio error reappears in this case and all song tracks are muted, forcing him to manually close and reopen the game to play the newly generated MIDI file.
 
 ## [Project Log](https://docs.google.com/spreadsheets/d/1cvhibKC6C2piTqb6wom9Ge8BIiDPPLDGw0afi3QZ9Ro/edit?usp=sharing)
-
-### Testing
-
-User trials were conducted with our friends on Windows and macOS, alongside later verfications with Parallels VM.
