@@ -1,6 +1,6 @@
 
 
-#orbital2020 #LastMinuteWonders #MILESTONE3
+#orbital2020 #LastMinuteWonders #Splashdown
 
 # Bach to the Future
 
@@ -17,7 +17,7 @@ A music rhythm game for computers!
 
 ## Poster
 
-<img alt="Poster" src="./Milestone 2 poster Last Minute Wonders.png">
+<img alt="Poster" src="./Splashdown Poster.tiff">
 
 #### Proposed Level of Achievement: Apollo 11
 
@@ -52,7 +52,7 @@ Our team has set out to automate this process of beatmap generation using an alg
       ```
 
    4. ```bash
-      pip3 install pretty_midi python-vlc midi2audio
+      pip3 install pretty_midi python-vlc
       ```
 
    5. ```bash
@@ -63,14 +63,9 @@ Our team has set out to automate this process of beatmap generation using an alg
       brew install fluidsynth
       ```
 
-   7. ```bash
-      cd ~/Downloads/BTTF_SourceCode
-      ```
-      
-   8. ```bash
-      nohup python3 main.py>/dev/null &
-      ```
-5. Minimize the **Terminal** window and enjoy the game!
+5. Open the folder and double click on ***BTTF Launcher (macOS)*** and enjoy the game!
+
+From now on, just double click on the Launcher if you ever wish to revisit the game? Make an alias in your **Applications** or **Desktop** folder, for ease of access!
 
 [Live installation video](https://youtu.be/Y02bGWqIAW8)
 
@@ -172,9 +167,9 @@ Volume changes: [90]
 
 We are also able to manipulate individual note timings, modify volume.
 
-### [midi2audio](https://github.com/bzamecnik/midi2audio) and [Fluidsynth](https://github.com/FluidSynth/fluidsynth)
+### [Fluidsynth](https://github.com/FluidSynth/fluidsynth)
 
-Further library discoveries were made that allowed for the direct output of audio files directly from python. Previously, all the audio files you heard were manually exported from digital audio workstations. This is the last piece of the puzzle that enabled the **Sandbox Mode**. 
+This API allowed for the direct output of audio files directly from python. Previously, all the audio files you heard were manually exported from digital audio workstations. This is the last piece of the puzzle that enabled the **Sandbox Mode**. 
 
 ## Testing
 User trials were conducted with our friends on Windows and macOS, alongside later verifications with Parallels VM.
