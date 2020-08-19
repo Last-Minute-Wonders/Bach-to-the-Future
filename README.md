@@ -17,7 +17,7 @@ A music rhythm game for computers!
 
 ## Poster
 
-<img alt="Poster" src="./Splashdown Poster.tiff">
+<img alt="Poster" src="./Splashdown Poster.png">
 
 #### Proposed Level of Achievement: Apollo 11
 
