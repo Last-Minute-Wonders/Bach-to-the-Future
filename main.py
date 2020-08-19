@@ -832,14 +832,16 @@ class PlayGameState(BaseState):
 		
 		# GAME BEGINS WHEN AUDIO BEGINS
 		tapSnapshot = [False for _ in range(self.laneNo)]
-		if self.player.is_playing():
+		
+		if self.player.is_playing() or self.player.get_position() > 0.95:
 			# MOVEMENT
 			increaseY = self.orb_spd * deltaTime
 			for orb in self.orbs.copy():
 				orb[1][1] += increaseY
 				if orb[1][1] > self.fsm.HEIGHT:
 					self.orbs.remove(orb)
-			
+		
+		if self.player.is_playing():
 			# COMPUTER VISION
 			for orb in self.orbs:
 				# orb = source, dest, area
@@ -1044,8 +1046,8 @@ class GameOverState(BaseState):
 		
 		
 		
-		self.score_line = TextLine(f"  Score : {self.score}", self.score_font, (25, 150))
-		self.streak_line= TextLine(f" Streak : {self.max_streak}", self.score_font, (25, 200))
+		self.score_line = TextLine(f"    Score : {self.score}", self.score_font, (25, 150))
+		self.streak_line= TextLine(f"   Streak : {self.max_streak}", self.score_font, (25, 200))
 		self.allowance_line = TextLine(f"Allowance : {self.accuracy}", self.score_font, (25, 250))
 		
 		self.track_line = TextLine(self.track, self.score_font, (400, 50)).align_ctr()
@@ -1101,20 +1103,20 @@ class GameOverState(BaseState):
 
 		if self.timer2 > self.timer > self.timer1 and self.score < self.streak_score:
 			self.score += max(round((self.streak_score - self.init_score)/ (self.fsm.FPS*3.5)), 1)
-			self.score_line = TextLine(f" Score : {self.score}", self.score_font, (25, 150))
+			self.score_line = TextLine(f"    Score : {self.score}", self.score_font, (25, 150))
 		elif self.timer == self.timer2:
 			self.impact_sound.stop()
-			self.score_line = TextLine(f" Score : {self.streak_score}", self.score_font, (25, 150))
+			self.score_line = TextLine(f"    Score : {self.streak_score}", self.score_font, (25, 150))
 		elif self.timer3 > self.timer > self.timer2 and self.streak_score != self.final_score:
 			if self.streak_score < self.final_score:
 				self.score += max(round((self.final_score - self.streak_score) / (self.fsm.FPS * 1.5)), 1)
 			else:
 				self.score += min(round((self.final_score - self.streak_score) / (self.fsm.FPS * 1.5)), -1)
-			self.score_line = TextLine(f" Score : {self.score}", self.score_font, (25, 150))
+			self.score_line = TextLine(f"    Score : {self.score}", self.score_font, (25, 150))
 		elif self.timer > self.timer3:
 			self.grade_sound.play()
 			self.isDone = True
-			self.score_line = TextLine(f" Score : {self.final_score}", self.score_font, (25, 150))
+			self.score_line = TextLine(f"    Score : {self.final_score}", self.score_font, (25, 150))
 	
 	def draw(self):
 		super().draw()
@@ -1218,14 +1220,14 @@ class SandBoxState(BaseState):
 						scandir(action)
 						self.fsm.ch_state(SandBoxState(self.fsm), {"curr_dir": action})
 					except:
-						self.error_text = TextLine("Access denied", self.drive_font, (110, 200), font_colour=rgb.RED)
+						self.error_text = TextLine("Access denied", self.drive_font, (120, 50), font_colour=rgb.RED)
 				else:
 					mac_action = path.join('/Volumes', action)
 					try:
 						scandir(mac_action)
 						self.fsm.ch_state(SandBoxState(self.fsm), {"curr_dir": mac_action})
 					except:
-						self.error_text = TextLine("Access denied", self.drive_font, (110, 200), font_colour=rgb.RED)
+						self.error_text = TextLine("Access denied", self.drive_font, (120, 50), font_colour=rgb.RED)
 			
 			elif action in self.folders:
 				
@@ -1234,7 +1236,7 @@ class SandBoxState(BaseState):
 					scandir(file_path)
 					self.fsm.ch_state(SandBoxState(self.fsm), {"curr_dir": path.normpath(file_path)})
 				except:
-					self.error_text = TextLine("Access denied", self.drive_font, (110, 200), font_colour=rgb.RED)
+					self.error_text = TextLine("Access denied", self.drive_font, (120, 50), font_colour=rgb.RED)
 			
 			elif action in self.files:
 				file_path = path.join(self.curr_dir, action)
