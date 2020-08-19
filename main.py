@@ -365,7 +365,7 @@ class AboutState(BaseState):
 				self.fsm.ch_state(MainMenuState(self.fsm))
 			
 			elif action == "Website":
-				wb.open_new_tab("https://last-minute-wonders.github.io/Bach-to-the-Future/")
+				wb.open_new_tab("https://github.com/Last-Minute-Wonders/Bach-to-the-Future")
 	
 	def draw(self):
 		super().draw()
