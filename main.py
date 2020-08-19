@@ -937,7 +937,7 @@ class PlayGameState(BaseState):
 		self.scorePercentage = self.score / self.fullScore
 		
 		# SCORE REVIEW IN GAME OVER STATE
-		if not self.orbs:
+		if not self.orbs and self.player.get_position() > 0.95:
 			self.countdown -= 1
 			if self.countdown < 0:
 				gradebook = {0: 'FAIL', 0.125: 'C', 0.375: 'B', 0.625: 'A', 0.875: 'S', 1: 'PERFECT'}
