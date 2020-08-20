@@ -2,6 +2,8 @@
 
 #orbital2020 #LastMinuteWonders #Splashdown
 
+#####  Note: This repo is migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future 
+
 # Bach to the Future
 
 A music rhythm game for computers!
@@ -17,7 +19,7 @@ A music rhythm game for computers!
 
 ## Poster
 
-<img alt="Poster" src="./Splashdown Poster.png">
+<img alt="Poster" src="./docs/Splashdown Poster.png">
 
 #### Proposed Level of Achievement: Apollo 11
 
