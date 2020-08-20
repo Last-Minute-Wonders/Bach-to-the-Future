@@ -814,7 +814,7 @@ class PlayGameState(BaseState):
 		self.player = self.fsm.wav_files[wav_file]
 		self.volume = int(get_config()["Default Game Volume"]["Value"])
 		self.player.audio_set_volume(self.volume)
-		self.songLength = int(info[9]) * 1000  # in milliseconds
+		self.songLength = float(info[9]) * 1000  # in milliseconds
 		self.songPosition = 0
 	
 	def update(self, game_time, lag):
