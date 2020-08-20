@@ -814,9 +814,12 @@ class PlayGameState(BaseState):
 		self.player = self.fsm.wav_files[wav_file]
 		self.volume = int(get_config()["Default Game Volume"]["Value"])
 		self.player.audio_set_volume(self.volume)
+		self.songLength = int(info[9]) * 1000  # in milliseconds
+		self.songPosition = 0
 	
 	def update(self, game_time, lag):
 		deltaTime = self.fsm.fps_clock.get_time() / 1000
+		self.songPosition = self.player.get_time() / self.songLength
 		
 		# TIMER EVENTS
 		if self.start_timer < 0 and not self.hasStarted:
@@ -833,7 +836,7 @@ class PlayGameState(BaseState):
 		# GAME BEGINS WHEN AUDIO BEGINS
 		tapSnapshot = [False for _ in range(self.laneNo)]
 		
-		if self.player.is_playing() or self.player.get_position() > 0.95:
+		if self.player.is_playing() or self.songPosition > 0.95:
 			# MOVEMENT
 			increaseY = self.orb_spd * deltaTime
 			for orb in self.orbs.copy():
@@ -937,7 +940,7 @@ class PlayGameState(BaseState):
 		self.scorePercentage = self.score / self.fullScore
 		
 		# SCORE REVIEW IN GAME OVER STATE
-		if not self.orbs and self.player.get_position() > 0.95:
+		if not self.orbs or self.songPosition > 0.95:
 			self.countdown -= 1
 			if self.countdown < 0:
 				gradebook = {0: 'FAIL', 0.125: 'C', 0.375: 'B', 0.625: 'A', 0.875: 'S', 1: 'PERFECT'}
@@ -992,7 +995,7 @@ class PlayGameState(BaseState):
 				self.fsm.screen.blit(correct[1], position)
 		self.fsm.screen.blit(self.meter_bar, (11, 499 - self.scorePercentage * 398),
 		                     (0, 0, 28, self.scorePercentage * 398))
-		pygame.draw.rect(self.fsm.screen, (248,146,17), (0, 590, round(800 * self.player.get_position()), 10), 0)
+		pygame.draw.rect(self.fsm.screen, (248,146,17), (0, 590, round(800 * self.songPosition), 10), 0)
 		
 		if self.congrats_timer > 0:
 			self.congrats.draw(self.fsm.screen)

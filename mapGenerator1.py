@@ -1,7 +1,6 @@
 from pretty_midi import PrettyMIDI
 import pretty_midi, csv, itertools, time, os
 from sys import platform as SYS_PLATFORM
-
 import sys, subprocess
 
 sys.path.append(".\\FluidSynth_Windows")
@@ -73,22 +72,32 @@ def midiFunnel(midi_path, quantize, onekey, changeTempo, changeVolume, chosen_in
 				duration = note.get_duration() // unit_time * unit_time
 				note.end = note.start + duration
 	#########################################################################
-	if changeVolume:
+	if changeVolume or changeTempo != 1:
 		for instrument in mid.instruments:
 			for msg in instrument.control_changes:
-				if msg.number == 7 and msg.value > 0:
+				msg.time *= changeTempo
+				if changeVolume and msg.number == 7 and msg.value > 0:
 					msg.value = max(min(127, msg.value + changeVolume), 0)
 	#########################################################################
 	if changeTempo != 1:
+		for key_signature in mid.key_signature_changes:
+			key_signature.time *= changeTempo
+		for time_signature in mid.time_signature_changes:
+			time_signature.time *= changeTempo
 		for instrument in mid.instruments:
+			for pitch_bend in instrument.pitch_bends:
+				pitch_bend.time *= changeTempo
 			for note in instrument.notes:
 				note.start *= changeTempo
 				note.end *= changeTempo
+		for lyric in mid.lyrics:
+			lyric.time *= changeTempo
 	#########################################################################
 	mid.write(new_midi_path)
 	mid = PrettyMIDI(new_midi_path)
 
-	songLength = time.strftime("%M:%S", time.gmtime(mid.get_end_time()))
+	end_time = max(instrument.notes[-1].end for instrument in mid.instruments)
+	songLength = time.strftime("%M:%S", time.gmtime(end_time))
 
 	if chosen_instruments:
 		for number, instrument in enumerate(mid.instruments.copy()):
@@ -134,9 +143,9 @@ def midiFunnel(midi_path, quantize, onekey, changeTempo, changeVolume, chosen_in
 
 	info_header = ['totalNotes', 'sustainedNotes', 'totalSustainDuration', \
 	               'songLength', 'selected_instruments', 'initial_instruments', 'average_tempo', 'unit_time',
-	               'crotchet']
+	               'crotchet','songLength_in_seconds']
 	info = [totalNotes, sustainedNotes, totalSustainDuration, \
-	        songLength, selected_instruments, initial_instruments, average_tempo, unit_time, crotchet]
+	        songLength, selected_instruments, initial_instruments, average_tempo, unit_time, crotchet, end_time]
 
 	csv_path = path.join('beatmaps', name + '.csv')
 	with open(csv_path, 'w', newline='') as file:

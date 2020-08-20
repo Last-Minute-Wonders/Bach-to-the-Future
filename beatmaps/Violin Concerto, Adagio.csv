@@ -1,5 +1,5 @@
 totalNotes,sustainedNotes,totalSustainDuration,songLength,selected_instruments,initial_instruments,average_tempo,unit_time,crotchet
-655,198,176.78410483854162,05:02,Violin,"Violin, Cuerdas1, Cuerdas1, Cuerdas2, Cuerdas2, Cuerdas2, Flauta, Oboe, Clarinete, Clarinete, Fagot, Trompa, Trombon, Platillos and Timpano",188.86051923517533,NOT QUANTIZED,0.3176947741273867
+655,198,176.78410483854162,05:02,Violin,"Violin, Cuerdas1, Cuerdas1, Cuerdas2, Cuerdas2, Cuerdas2, Flauta, Oboe, Clarinete, Clarinete, Fagot, Trompa, Trombon, Platillos and Timpano",188.86051923517533,NOT QUANTIZED,0.3176947741273867,302
 End Time,Start Time,Duration,Pitch,Sustained
 42.295055333333345,38.69505533333334,3.6000000000000014,83,True
 43.19505533333334,42.295055333333345,0.8999999999999986,78,True

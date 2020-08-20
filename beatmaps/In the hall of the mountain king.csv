@@ -1,5 +1,5 @@
 totalNotes,sustainedNotes,totalSustainDuration,songLength,selected_instruments,initial_instruments,average_tempo,unit_time,crotchet
-180,40,27.06749999999998,01:22,Acoustic Grand Piano,  and  ,146.43912670416628,NOT QUANTIZED,0.40972656249999995
+180,40,27.06749999999998,01:22,Acoustic Grand Piano,  and  ,146.43912670416628,NOT QUANTIZED,0.40972656249999995,82
 End Time,Start Time,Duration,Pitch,Sustained
 0.305,0.0,0.305,47,False
 0.605,0.3,0.305,49,False

@@ -1,5 +1,5 @@
 totalNotes,sustainedNotes,totalSustainDuration,songLength,selected_instruments,initial_instruments,average_tempo,unit_time,crotchet
-320,125,65.18862254999999,02:13,Tenor Sax,"gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid and gsteps.mid",255.91845047021414,NOT QUANTIZED,0.23444968461538604
+320,125,65.18862254999999,02:13,Tenor Sax,"gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid, gsteps.mid and gsteps.mid",255.91845047021414,NOT QUANTIZED,0.23444968461538604,133
 End Time,Start Time,Duration,Pitch,Sustained
 1.42,0.9400000000000001,0.47999999999999987,66,True
 1.92,1.44,0.48,62,True
