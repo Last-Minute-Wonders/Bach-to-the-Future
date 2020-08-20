@@ -324,23 +324,6 @@
             },
             "Highscores": {},
             "Max Grade": {}
-        },
-        "YiJia": {
-            "Achievements": {
-                "Resurrection": true,
-                "Der Kapellmeister": false,
-                "Enlightened": false,
-                "Let Me Spill My Heart!": false,
-                "Modern Times": false
-            },
-            "Highscores": {
-                "Queen of The Night": 17414,
-                "beethoven_fur_elise": 5384
-            },
-            "Max Grade": {
-                "Queen of The Night": "A",
-                "beethoven_fur_elise": "A"
-            }
         }
     },
     "Factory Data": {
@@ -687,5 +670,5 @@
             ""
         ]
     },
-    "Current User": "YiJia"
+    "Current User": "Guest"
 }

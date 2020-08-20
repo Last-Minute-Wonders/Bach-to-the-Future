@@ -2,7 +2,7 @@
 
 #orbital2020 #LastMinuteWonders #Splashdown
 
-#####  Note: This repo is migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future 
+#####  **Note: This repo was migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future**
 
 # Bach to the Future
 
@@ -81,26 +81,28 @@ From now on, just double click on the Launcher if you ever wish to revisit the g
 
 3. Make sure you have **[VLC player](https://www.videolan.org/index.html)** on your system.
 
-4. Launch Command Prompt  in the directory of the downloaded file and paste the following lines. (Use the right click to paste text into the window)
+4. Launch Command Prompt and paste the following line. (Use the right click to paste text into the window)
 
 	1. ```batch
-		pip install pretty_midi python-vlc midi2audio psutil pygame==2.0.0.dev10
+		
+		pip install pretty_midi python-vlc psutil pygame==2.0.0.dev10
 		```
 	
+5. Open the folder containing the source code and double click the `BTTF Launcher (Windows).exe` file.
 
-	2. ```batch
-		pythonw main.py
-		```
+#### Embedded Python bundled with source code distribution
 
-#### Compiled binary distribution
+1. Download the release `BTTF_Windows_Packaged`and unzip the file.
 
-1. Download the release (binary file) and unzip the file.
-2. Ensure you have the latest [Microsoft Visual C++ redistributables](https://support.microsoft.com/en-sg/help/2977003/the-latest-supported-visual-c-downloads) installed.
-3. Open the folder in explorer and click on the main.exe file (it helps if you sort by file type to locate it)
+2. Make sure you have **[VLC player](https://www.videolan.org/index.html)** on your system.
+
+3. Open the folder in explorer and click on the `BTTF Launcher (Windows).exe` file (it helps if you sort by file type to locate it)
+
+#### We no longer distribute a compiled binary version due to issues with modularity and compatibility.
 
 ## Gameplay
 
-**For a quick taste of the game, go into ARCADE and choose any song. Use the keys `f`, `g`, `h` and `j` for the corresponding lanes.**
+**For a quick taste of the game, go into ARCADE and choose any song. Use the keys `d`, `f`, `g` and `h` for the corresponding lanes.**
 
 [Gameplay Video](https://youtu.be/ERKxTDv0J4M)
 
