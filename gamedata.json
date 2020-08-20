@@ -15,7 +15,7 @@
             ]
         },
         "Default Game Volume": {
-            "Value": "60",
+            "Value": "100",
             "Choices": [
                 "20",
                 "40",
@@ -30,7 +30,7 @@
             ]
         },
         "Background Volume": {
-            "Value": "60",
+            "Value": "100",
             "Choices": [
                 "20",
                 "40",
@@ -42,17 +42,6 @@
                 "160",
                 "180",
                 "200"
-            ]
-        },
-        "Number of Lanes": {
-            "Value": "6",
-            "Choices": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
             ]
         },
         "Accuracy Margin (Advanced)": {
@@ -70,6 +59,17 @@
                 "10",
                 "11",
                 "12"
+            ]
+        },
+        "Number of Lanes": {
+            "Value": "6",
+            "Choices": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         "Lane 1 key": {

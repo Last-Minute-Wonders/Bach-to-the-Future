@@ -20,8 +20,8 @@ class StoryState(BaseState):
 		self.font1_2= pygame.font.Font(path.join('.', "assets", "VisiaPro-BoldOutline.otf"), 48)
 		self.font2= pygame.font.Font(path.join('.', "assets", "Helvetica.ttf"), 22)
 		self.font3= pygame.font.Font(path.join('.', "assets", "Helvetica-Bold.ttf"), 28)
-		self.title= TextLine("StoryState", self.font1, (400, 50), font_colour= rgb.WHITE).align_ctr()
-		self.title2= TextLine("StoryState", self.font1_2, (400, 50), font_colour= rgb.BLACK).align_ctr()
+		self.title= TextLine("", self.font1, (400, 50), font_colour= rgb.WHITE).align_ctr()
+		self.title2= TextLine("", self.font1_2, (400, 50), font_colour= rgb.BLACK).align_ctr()
 		self.curr_text= ""
 		self.text_len= 0
 		self.curr_text_box= TextBox(self.curr_text, self.font2, (55, 495), (620, 245), font_colour= rgb.BLACK)

@@ -1122,7 +1122,7 @@ class GameOverState(BaseState):
 		super().draw()
 		self.score_line.draw(self.fsm.screen)
 		if self.timer > self.timer1:
-			self.impact_sound.play()
+			if not self.impact_sound.is_playing(): self.impact_sound.play()
 			self.streak_line.draw(self.fsm.screen)
 		if self.timer > self.timer2:
 			self.allowance_line.draw(self.fsm.screen)
