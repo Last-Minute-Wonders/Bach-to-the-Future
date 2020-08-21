@@ -2,8 +2,6 @@
 
 #orbital2020 #LastMinuteWonders #Splashdown
 
-#####  **Note: This repo was migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future**
-
 # Bach to the Future
 
 A music rhythm game for computers!
@@ -30,6 +28,8 @@ Tap Tap Revenge was one of the original hits in music rhythm gaming, the premise
 Our team has set out to automate this process of beatmap generation using an algorithm that works over MIDI files. We know that the classical music genre is one that is highly structured, which would be ideal for the application of our low-level algorithm. Coincidentally, it is also a highly neglected genre with a wealth of interesting information, we thought we would take this chance to make a classical-music-themed Tap Tap Revenge to fill in this gap.
 
 ## Installation
+
+### Link to GitHub repository: https://github.com/Last-Minute-Wonders/Bach-to-the-Future
 
 ### For MacOS
 
