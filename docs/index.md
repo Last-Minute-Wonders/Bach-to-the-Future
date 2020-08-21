@@ -1,5 +1,3 @@
-
-
 #orbital2020 #LastMinuteWonders #Splashdown
 
 # Bach to the Future
@@ -9,7 +7,7 @@ A music rhythm game for computers!
 1. [Poster](#Poster)
 2. [Motivation](#Motivation)
 3. [Installation](#Installation)
-4. [Gameplay](#gameplay)
+4. [How to Play?](#how-to-play)
 5. [Full Features](#full-features)
 6. [Game Engine Breakdown](#game-engine-breakdown)
 7. [Compatibility Issues](#Compatibility-Issues)
@@ -18,6 +16,8 @@ A music rhythm game for computers!
 ## Poster
 
 <img alt="Poster" src="./docs/Splashdown Poster.png">
+
+[Video](https://youtu.be/ZN3bAG7k4H4)
 
 #### Proposed Level of Achievement: Apollo 11
 
@@ -97,11 +97,9 @@ From now on, just double click on the Launcher if you ever wish to revisit the g
 
 #### We no longer distribute a compiled binary version due to issues with modularity and compatibility.
 
-## Gameplay
+## How to Play?
 
-**For a quick taste of the game, go into ARCADE and choose any song. Use the keys `d`, `f`, `g` and `h` for the corresponding lanes.**
-
-[Gameplay Video](https://youtu.be/ERKxTDv0J4M)
+**For a quick taste of the game, go into ARCADE and choose any song. Use the keys `d`, `f`, `g`, `h`, `j` and `k` for the corresponding lanes.**
 
 ## Full Features
 
