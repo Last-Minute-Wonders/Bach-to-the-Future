@@ -21,7 +21,7 @@ A music rhythm game for computers!
 
 <img alt="Poster" src="./docs/Splashdown Poster.png">
 
-[Video](https://youtu.be/ZN3bAG7k4H4)
+## [Video](https://youtu.be/ZN3bAG7k4H4)
 
 #### Proposed Level of Achievement: Apollo 11
 
@@ -35,7 +35,7 @@ Our team has set out to automate this process of beatmap generation using an alg
 
 ### For MacOS
 
-1. Clone (Download) this repository into your **Downloads** folder and **unzip** the file.
+1. Download the latest release (source code) into your **Downloads** folder and **unzip** the file.
 
 2. Make sure you have a **modern Python** version installed. As of 27 July 2020, this is [version 3.8.5](https://www.python.org/downloads/mac-osx/). Follow the link to download the required installer and follow through with the installation process with the default settings.
 
@@ -67,7 +67,7 @@ Our team has set out to automate this process of beatmap generation using an alg
       brew install fluidsynth
       ```
 
-5. Open the folder and double click on ***BTTF Launcher (macOS)*** and enjoy the game!
+5. Open the folder and double click on `BTTF Launcher (macOS)` and enjoy the game!
 
 From now on, just double click on the Launcher if you ever wish to revisit the game? Make an alias in your **Applications** or **Desktop** folder, for ease of access!
 
@@ -77,7 +77,7 @@ From now on, just double click on the Launcher if you ever wish to revisit the g
 
 #### Source code distribution
 
-1. Download the release (source code) file and unzip the file.
+1. Download the latest release (source code) and unzip the file.
 
 2. Make sure you have a **modern Python** version installed. As of 27 July 2020, this is [version 3.8.5](https://www.python.org/downloads/windows/). Follow the link to download the required installer and follow through with the installation process with the default settings. Ensure python.exe and pip.exe are both added to the system PATH 
 
@@ -97,7 +97,7 @@ From now on, just double click on the Launcher if you ever wish to revisit the g
 
 2. Make sure you have **[VLC player](https://www.videolan.org/index.html)** on your system.
 
-3. Open the folder in explorer and click on the `BTTF Launcher (Windows).exe` file (it helps if you sort by file type to locate it)
+3. Open the folder in explorer and click on the `BTTF Launcher (Windows).exe` file (It helps if you sort by file type to locate it)
 
 #### We no longer distribute a compiled binary version due to issues with modularity and compatibility.
 
@@ -181,9 +181,15 @@ User trials were conducted with our friends on Windows and macOS, alongside late
 
 Due to [pygame](https://www.pygame.org/news) being a less popular open source library than other game engines such as Unity, the library has not been keeping up with Python upgrades and OS upgrades over time. The last stable release was on 25 April 2019 and this version has various compatibility problems that affects our development.
 
-### Phantom Orbs
+### Phantom Orbs (with pygame <= 1.9.6)
 
-For reasons unknown, among songs of longer durations (which would normally imply a greater number of orbs), the visuals of the orbs would break down - orbs that aren't meant to appear would appear on top of other orbs. **Fortunately, this does not happen when pygame 2.0.0.dev10 is being used.** **The stable release is essential when one wishes to deploy the scripts as executables for various OSes. This issue is only pertinent to users who are running the executable version.**
+For reasons unknown, among songs of longer durations (which would normally imply a greater number of orbs), the visuals of the orbs would break down - orbs that aren't meant to appear would appear on top of other orbs. **Fortunately, this does not happen when pygame 2.0.0.dev10 is being used.** 
+
+### Audio Issues (with certain Windows devices)
+
+On Orbitee Mingyi's computer, there were issues using python-vlc to play .wav and .flac files when an active Pygame window is open. Various attempts were made to fix this directly were unsuccessful we had to sidestep it by loading all available game tracks (the background and campaign audio uses mp3 which did not have this issue) before initialising the display. This worked perfectly (at the cost of unneeded RAM usage by preloading unnecessary audio assets) until the implementation of sandbox mode. Because we allow the user to upload his/her own MIDI file to play with, there is now no possible way to preload all possible tracks beforehand. This was solved by performing a re-initialisation of the game before after processing a MIDI file, similar to how the game automatically updates itself after changing an option. However, the audio error reappears in this case and all song tracks are muted, forcing him to manually close and reopen the game to play the newly generated MIDI file.
+
+## Other issues
 
 ### Fluidsynth.exe triggering anti-malware software
 
@@ -201,8 +207,5 @@ We interface the system's installation of VLC player through the python-vlc modu
 
 This is due to the limitations of python-vlc's parsing of the PATH environmental variable in Windows. To verify if this is the case, type `echo %PATH:;=&echo.%` inside a command prompt window and check the output. Look for the entry with `VideoLAN\VLC`and check if there are spaces within it. **If this is the case, the only way is to install VLC player in another directory which does not have spaces in it.**
 
-### Audio Issues with certain Windows devices
-
-On Orbitee Mingyi's computer, there were issues using python-vlc to play .wav and .flac files when an active Pygame window is open. Various attempts were made to fix this directly were unsuccessful we had to sidestep it by loading all available game tracks (the background and campaign audio uses mp3 which did not have this issue) before initialising the display. This worked perfectly (at the cost of unneeded RAM usage by preloading unnecessary audio assets) until the implementation of sandbox mode. Because we allow the user to upload his/her own MIDI file to play with, there is now no possible way to preload all possible tracks beforehand. This was solved by performing a re-initialisation of the game before after processing a MIDI file, similar to how the game automatically updates itself after changing an option. However, the audio error reappears in this case and all song tracks are muted, forcing him to manually close and reopen the game to play the newly generated MIDI file.
 
 ## [Project Log](https://docs.google.com/spreadsheets/d/1cvhibKC6C2piTqb6wom9Ge8BIiDPPLDGw0afi3QZ9Ro/edit?usp=sharing)
