@@ -15,7 +15,7 @@ A music rhythm game for computers!
 
 ## Poster
 
-<img alt="Poster" src="./docs/Splashdown Poster.png">
+<img alt="Poster" src="./Splashdown Poster.png">
 
 [Video](https://youtu.be/ZN3bAG7k4H4)
 
