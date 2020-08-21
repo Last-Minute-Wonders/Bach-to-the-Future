@@ -2,8 +2,6 @@
 
 #orbital2020 #LastMinuteWonders #Splashdown
 
-#####  **Note: This repo was migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future**
-
 # Bach to the Future
 
 A music rhythm game for computers!
