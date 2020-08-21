@@ -2,6 +2,8 @@
 
 #orbital2020 #LastMinuteWonders #Splashdown
 
+#####  **Note: This repo was migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future**
+
 # Bach to the Future
 
 A music rhythm game for computers!
@@ -17,7 +19,7 @@ A music rhythm game for computers!
 
 ## Poster
 
-<img alt="Poster" src="./Splashdown Poster.png">
+<img alt="Poster" src="./docs/Splashdown Poster.png">
 
 #### Proposed Level of Achievement: Apollo 11
 
@@ -29,11 +31,9 @@ Our team has set out to automate this process of beatmap generation using an alg
 
 ## Installation
 
-### Link to GitHub repository: https://github.com/Last-Minute-Wonders/Bach-to-the-Future
-
 ### For MacOS
 
-1. Download the release file ***BTTF_SourceCode.zip*** into your **Downloads** folder and **unzip** the file.
+1. Clone (Download) this repository into your **Downloads** folder and **unzip** the file.
 
 2. Make sure you have a **modern Python** version installed. As of 27 July 2020, this is [version 3.8.5](https://www.python.org/downloads/mac-osx/). Follow the link to download the required installer and follow through with the installation process with the default settings.
 
@@ -84,7 +84,6 @@ From now on, just double click on the Launcher if you ever wish to revisit the g
 4. Launch Command Prompt and paste the following line. (Use the right click to paste text into the window)
 
 	1. ```batch
-		
 		pip install pretty_midi python-vlc psutil pygame==2.0.0.dev10
 		```
 	
@@ -175,7 +174,7 @@ We are also able to manipulate individual note timings, modify volume.
 
 This API allowed for the direct output of audio files directly from python. Previously, all the audio files you heard were manually exported from digital audio workstations. This is the last piece of the puzzle that enabled the **Sandbox Mode**. 
 
-## Testing
+# Testing
 User trials were conducted with our friends on Windows and macOS, alongside later verifications with Parallels VM.
 
 ## Compatibility Issues
