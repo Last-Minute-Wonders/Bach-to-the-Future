@@ -11,7 +11,7 @@ A music rhythm game for computers!
 1. [Poster](#Poster)
 2. [Motivation](#Motivation)
 3. [Installation](#Installation)
-4. [How to Play?](#how-to-play?)
+4. [How to Play?](#how-to-play)
 5. [Full Features](#full-features)
 6. [Game Engine Breakdown](#game-engine-breakdown)
 7. [Compatibility Issues](#Compatibility-Issues)
