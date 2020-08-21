@@ -1,6 +1,8 @@
 
 
-#orbital2020 #LastMinuteWonders #MILESTONE3
+#orbital2020 #LastMinuteWonders #Splashdown
+
+#####  **Note: This repo was migrated from https://github.com/mingyi456/-MIGRATED-Bach-to-the-future**
 
 # Bach to the Future
 
@@ -17,7 +19,7 @@ A music rhythm game for computers!
 
 ## Poster
 
-<img alt="Poster" src="./Milestone 2 poster Last Minute Wonders.png">
+<img alt="Poster" src="./Splashdown Poster.png">
 
 #### Proposed Level of Achievement: Apollo 11
 
@@ -52,7 +54,7 @@ Our team has set out to automate this process of beatmap generation using an alg
       ```
 
    4. ```bash
-      pip3 install pretty_midi python-vlc midi2audio
+      pip3 install pretty_midi python-vlc
       ```
 
    5. ```bash
@@ -63,14 +65,9 @@ Our team has set out to automate this process of beatmap generation using an alg
       brew install fluidsynth
       ```
 
-   7. ```bash
-      cd ~/Downloads/BTTF_SourceCode
-      ```
-      
-   8. ```bash
-      python3 main.py
-      ```
-5. Minimize the **Terminal** window and enjoy the game!
+5. Open the folder and double click on ***BTTF Launcher (macOS)*** and enjoy the game!
+
+From now on, just double click on the Launcher if you ever wish to revisit the game? Make an alias in your **Applications** or **Desktop** folder, for ease of access!
 
 [Live installation video](https://youtu.be/Y02bGWqIAW8)
 
@@ -84,26 +81,28 @@ Our team has set out to automate this process of beatmap generation using an alg
 
 3. Make sure you have **[VLC player](https://www.videolan.org/index.html)** on your system.
 
-4. Launch Command Prompt  in the directory of the downloaded file and paste the following lines. (Use the right click to paste text into the window)
+4. Launch Command Prompt and paste the following line. (Use the right click to paste text into the window)
 
 	1. ```batch
-		pip install pretty_midi python-vlc midi2audio psutil pygame==2.0.0.dev10
+		
+		pip install pretty_midi python-vlc psutil pygame==2.0.0.dev10
 		```
 	
+5. Open the folder containing the source code and double click the `BTTF Launcher (Windows).exe` file.
 
-	2. ```batch
-		pythonw main.py
-		```
+#### Embedded Python bundled with source code distribution
 
-#### Compiled binary distribution
+1. Download the release `BTTF_Windows_Packaged`and unzip the file.
 
-1. Download the release (binary file) and unzip the file.
-2. Ensure you have the latest [Microsoft Visual C++ redistributables](https://support.microsoft.com/en-sg/help/2977003/the-latest-supported-visual-c-downloads) installed.
-3. Open the folder in explorer and click on the main.exe file (it helps if you sort by file type to locate it)
+2. Make sure you have **[VLC player](https://www.videolan.org/index.html)** on your system.
+
+3. Open the folder in explorer and click on the `BTTF Launcher (Windows).exe` file (it helps if you sort by file type to locate it)
+
+#### We no longer distribute a compiled binary version due to issues with modularity and compatibility.
 
 ## Gameplay
 
-**For a quick taste of the game, go into ARCADE and choose any song. Use the keys `f`, `g`, `h` and `j` for the corresponding lanes.**
+**For a quick taste of the game, go into ARCADE and choose any song. Use the keys `d`, `f`, `g` and `h` for the corresponding lanes.**
 
 [Gameplay Video](https://youtu.be/ERKxTDv0J4M)
 
@@ -172,24 +171,39 @@ Volume changes: [90]
 
 We are also able to manipulate individual note timings, modify volume.
 
-### [midi2audio](https://github.com/bzamecnik/midi2audio) and [Fluidsynth](https://github.com/FluidSynth/fluidsynth)
+### [Fluidsynth](https://github.com/FluidSynth/fluidsynth)
 
-Further library discoveries were made that allowed for the direct output of audio files directly from python. Previously, all the audio files you heard were manually exported from digital audio workstations. This is the last piece of the puzzle that enabled the **Sandbox Mode**. 
+This API allowed for the direct output of audio files directly from python. Previously, all the audio files you heard were manually exported from digital audio workstations. This is the last piece of the puzzle that enabled the **Sandbox Mode**. 
+
+## Testing
+User trials were conducted with our friends on Windows and macOS, alongside later verifications with Parallels VM.
 
 ## Compatibility Issues
 
-Due to [pygame](https://www.pygame.org/news) being a less popular open source library than other game engines such as Unity, the library has not been keeping up with Python upgrades and OS upgrades over time. The last stable release was on 25 April 2019 and this version has various compability problems that affects our development.
+Due to [pygame](https://www.pygame.org/news) being a less popular open source library than other game engines such as Unity, the library has not been keeping up with Python upgrades and OS upgrades over time. The last stable release was on 25 April 2019 and this version has various compatibility problems that affects our development.
 
 ### Phantom Orbs
 
 For reasons unknown, among songs of longer durations (which would normally imply a greater number of orbs), the visuals of the orbs would break down - orbs that aren't meant to appear would appear on top of other orbs. **Fortunately, this does not happen when pygame 2.0.0.dev10 is being used.** **The stable release is essential when one wishes to deploy the scripts as executables for various OSes. This issue is only pertinent to users who are running the executable version.**
+
+### Fluidsynth.exe triggering anti-malware software
+
+The role of fluidsynth.exe is to render a modified MIDI file generated in sandbox mode into a .flac file for playback during a game. However, when attempting to overwrite an existing .flac file, certain anti-malware software such as Norton Data Protector might block this overwrite operation and cause a failure. There may or may not be a pop up notification when this happens. Regardless, it should be possible to check the security history of the anti-malware suite and find out if this is the case. **It is thus recommended to add whole game directory as an exclusion and set fluidsynth.exe as an excluded process to prevent this from happening.**
+
+### Install directory of libvlc.dll (unable to be located, has spaces)
+
+Libvlc.dll is an essential dependency for the game and we avoid including this in the packaged version of the game because we found it non-trivial to package and it is a common software already in most systems. **Thus, we require that all users install the VLC player themselves.** Issues that still occur with a system with VLC player already installed include:
+
+#### `could not find "libvlc.dll"` VLC player not located in the PATH environmental variable (%PATH% for windows, $PATH for MacOS/Linux) and installed in a non-standard location.
+
+We interface the system's installation of VLC player through the python-vlc module which in turn interfaces the libvlc.dll file. The module requires the location of the libvlc.dll file for this. To do this, it first searches the root directory of the game (which is not there), then the PATH environmental variable. If libvlc.dll is still not found, it searches a few common locations before giving the error. **Thus, in order to avoid this error, it is necessary to either include the `VideoLAN/VLC` directory in PATH, or install VLC in a standard location (e.g. the default install directory)**
+
+#### `%1 is not a valid win32 application` (Windows) VLC player is installed in a directory with spaces
+
+This is due to the limitations of python-vlc's parsing of the PATH environmental variable in Windows. To verify if this is the case, type `echo %PATH:;=&echo.%` inside a command prompt window and check the output. Look for the entry with `VideoLAN\VLC`and check if there are spaces within it. **If this is the case, the only way is to install VLC player in another directory which does not have spaces in it.**
 
 ### Audio Issues with certain Windows devices
 
 On Orbitee Mingyi's computer, there were issues using python-vlc to play .wav and .flac files when an active Pygame window is open. Various attempts were made to fix this directly were unsuccessful we had to sidestep it by loading all available game tracks (the background and campaign audio uses mp3 which did not have this issue) before initialising the display. This worked perfectly (at the cost of unneeded RAM usage by preloading unnecessary audio assets) until the implementation of sandbox mode. Because we allow the user to upload his/her own MIDI file to play with, there is now no possible way to preload all possible tracks beforehand. This was solved by performing a re-initialisation of the game before after processing a MIDI file, similar to how the game automatically updates itself after changing an option. However, the audio error reappears in this case and all song tracks are muted, forcing him to manually close and reopen the game to play the newly generated MIDI file.
 
 ## [Project Log](https://docs.google.com/spreadsheets/d/1cvhibKC6C2piTqb6wom9Ge8BIiDPPLDGw0afi3QZ9Ro/edit?usp=sharing)
-
-### Testing
-
-User trials were conducted with our friends on Windows and macOS, alongside later verfications with Parallels VM.
