@@ -2,7 +2,7 @@
   [
     {
       "Type" : "Audio Start",
-      "File" : "Sheep may safely graze.mp3"
+      "File" : "sheep may safely graze.mp3"
     },
     {
       "Type" : "Title",
@@ -376,7 +376,7 @@
     },
     {
       "Type" : "Background",
-      "File" : "Burgtheatre.png"
+      "File" : "burgtheatre.png"
     }
   ],
   [
