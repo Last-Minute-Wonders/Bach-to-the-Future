@@ -86,7 +86,7 @@ From now on, just double click on the Launcher if you ever wish to revisit the g
 4. Launch Command Prompt and paste the following line. (Use the right click to paste text into the window)
 
 	1. ```batch
-		pip install pretty_midi python-vlc psutil pygame==2.0.0.dev10
+		pip install -U pretty_midi python-vlc psutil pygame
 		```
 	
 5. Open the folder containing the source code and double click the `BTTF Launcher (Windows).exe` file.
